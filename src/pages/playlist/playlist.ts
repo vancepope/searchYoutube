@@ -21,14 +21,14 @@ export class PlaylistPage {
   constructor(public navCtrl: NavController, private plt: Platform ,private youtube: YoutubeVideoPlayer, public navParams: NavParams, private youtubeProvider: YoutubeProvider) {
     let keyword = this.navParams.get('id');
     this.videos = this.youtubeProvider.videosByKeyword(keyword);
-
+    
   }
-  openVideo(videos) {
-    videos = this.navParams.get('VideoId');
-    this.url = 'https://www.youtube.com/watch?v=' + videos;
-    console.log(videos);
+  openVideo(videoId) {
+    videoId = this.navParams.get('VideoId');
+    this.url = 'https://www.youtube.com/watch?v=' + videoId;
+    console.log(videoId);
     if (this.plt.is('cordova')){
-      this.youtube.openVideo(videos);
+      this.youtube.openVideo(videoId);
     } else {
      window.open(this.url);
     }
