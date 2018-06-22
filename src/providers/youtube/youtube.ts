@@ -20,10 +20,4 @@ export class YoutubeProvider {
       return res.json()['items'];
     })
   }
- // getVideosByKeyword(keyword){
-  //  return this.http.get('https://www.googleapis.com/youtube/v3/search?key=' + this.apiKey + '&q=' + keyword + '&part=snippet,id&maxResults=20' )
-  //  .map(res =>{
-  //    return res.json()['items'];
-  //  })
-  //}
 }
