@@ -17,6 +17,7 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 })
 export class PlaylistPage {
   videos: Observable<any[]>;
+  url;
   constructor(public navCtrl: NavController, private plt: Platform ,private youtube: YoutubeVideoPlayer, public navParams: NavParams, private youtubeProvider: YoutubeProvider) {
     let keyword = this.navParams.get('id');
     this.videos = this.youtubeProvider.videosByKeyword(keyword);
@@ -24,12 +25,12 @@ export class PlaylistPage {
   }
   openVideo(videos) {
     videos = this.navParams.get('VideoId');
-    let url = 'https://www.youtube.com/watch?v=' + videos;
+    this.url = 'https://www.youtube.com/watch?v=' + videos;
     console.log(videos);
     if (this.plt.is('cordova')){
       this.youtube.openVideo(videos);
     } else {
-     window.open(url);
+     window.open(this.url);
     }
   }
 }
