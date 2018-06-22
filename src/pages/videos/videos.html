@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>
+      Search
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-item>
+    <ion-label stacked>Search By Keyword</ion-label>
+    <ion-input type="text" [(ngModel)]="keyword"></ion-input>
+  </ion-item>
+  <button full ion-button (click)="searchForVideos()" color="danger">Search Playlists</button>
+  <ion-list no-padding> 
+    <button ion-item *ngFor="let list of videos | async; let i = index" (click)="openVideos(list.id.videoId)">
+      <ion-thumbnail item-start>
+          <img [src]="list.snippet.thumbnails.high.url">
+        </ion-thumbnail>
+        <h2>{{ list.snippet.title }}</h2>
+        <p>{{ list.snippet.publishedAt | date: 'short' }}</p>
+      </button>
+    </ion-list>      
+</ion-content>
