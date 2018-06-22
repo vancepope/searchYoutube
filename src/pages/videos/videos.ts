@@ -26,7 +26,6 @@ export class VideosPage {
 
   searchForVideos(){
     this.videos = this.youtubeProvider.videosByKeyword(this.keyword);
-    try{
     this.videos.subscribe(data =>{
       console.log('data', data);
     }
@@ -34,14 +33,11 @@ export class VideosPage {
       , err =>{
         let alert = this.alertCtrl.create({
           title: 'Error',
-          message: 'No Videos found for keywords',
+          message: 'No Videos found for ' + this.keyword,
           buttons: ['Ok']
         });
           alert.present();
       });
-    } catch (err){
-      console.log(err);
-    }
   }
 
   openVideos(VideoId){

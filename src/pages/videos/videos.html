@@ -12,7 +12,7 @@
   </ion-item>
   <button full ion-button (click)="searchForVideos()" color="danger">Search Playlists</button>
   <ion-list no-padding> 
-    <button ion-item *ngFor="let list of videos | async; let i = index" (click)="openVideos(list.id.videoId)">
+    <button ion-item *ngFor="let list of videos | async" (click)="openVideos(list.id.videoId)">
       <ion-thumbnail item-start>
           <img [src]="list.snippet.thumbnails.high.url">
         </ion-thumbnail>
